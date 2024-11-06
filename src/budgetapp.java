@@ -1,23 +1,22 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.security.NoSuchAlgorithmException;
+import java.security.MessageDigest;
+import java.util.Base64;
 
 //user class
 class User {
     private String username;
-    private String password;
+    private String passwordHash;
 
     public User(String username, String password) {
         this.username = username;
-        this.password = password;
+        this.passwordHash = hashPassword(password);
     }
 
     public String getUser() {
         return username;
     }
-    public String getPass() {
-        return password;
+    public String hasingPass(String password) {
+
     }
 }
 
-//class to manage user registration and login
-class User
