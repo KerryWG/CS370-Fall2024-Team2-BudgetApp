@@ -1,22 +1,12 @@
 package com.example.budgetapp;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-public class Main extends Application {
-
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
-        Scene scene = new Scene(loader.load());
-        primaryStage.setTitle("Budget App");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
+@SpringBootApplication
+public class Main {
 
     public static void main(String[] args) {
-        launch(args);
+        SpringApplication.run(Main.class, args);
     }
 }

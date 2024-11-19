@@ -1,21 +1,32 @@
-package com.example.budgetapp.utils;
+package com.example.budgetapp.util;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import org.springframework.stereotype.Component;
+import org.springframework.ui.Model;
+import org.springframework.web.servlet.ModelAndView;
 
+@Component
 public class Navigation {
-    private static Stage stage;
 
-    public static void setStage(Stage primaryStage) {
-        stage = primaryStage;
+    /**
+     * Redirects to a specific URL.
+     *
+     * @param url The URL to redirect to.
+     * @return A string formatted for redirection.
+     */
+    public String redirect(String url) {
+        return "redirect:" + url;
     }
 
-    public static void loadScene(String fxml) throws Exception {
-        Parent root = FXMLLoader.load(Navigation.class.getResource("/fxml/" + fxml));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    /**
+     * Renders a view with model data.
+     *
+     * @param viewName The name of the Thymeleaf template to render.
+     * @param model    The data to be passed to the view.
+     * @return A ModelAndView object.
+     */
+    public ModelAndView renderView(String viewName, Model model) {
+        ModelAndView modelAndView = new ModelAndView(viewName);
+        model.asMap().forEach(modelAndView::addObject);
+        return modelAndView;
     }
 }
