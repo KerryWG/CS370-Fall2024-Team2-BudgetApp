@@ -1,21 +1,33 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
+    <link rel="stylesheet" href="/static/css/register.css">
+    <script>
+        function showSuccessMessage() {
+            alert("Account successfully registered! You can now log in.");
+        }
+    </script>
 </head>
 <body>
 <h1>Register</h1>
-<form th:action="@{/register}" method="post">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" required>
-    <br>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
-    <br>
-    <label for="pin">Pin (Optional for Main Account):</label>
-    <input type="text" id="pin" name="pin">
-    <br>
+<form method="post" action="/register" onsubmit="showSuccessMessage()">
+    <div>
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Username" required>
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Password" required>
+    </div>
+    <div>
+        <label for="pin">PIN (optional)</label>
+        <input type="text" id="pin" name="pin" placeholder="PIN">
+    </div>
     <button type="submit">Register</button>
 </form>
+<p>Already have an account? <a href="/login">Sign in now</a>.</p>
 </body>
 </html>

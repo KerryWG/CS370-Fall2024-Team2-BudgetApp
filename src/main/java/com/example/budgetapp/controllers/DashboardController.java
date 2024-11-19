@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class DashboardController {
 
     @GetMapping("/dashboard")
-    public String dashboard() {
-        return "dashboard"; // Returns the dashboard.html template
+    public String showDashboard() {
+        return "dashboard"; // Return the dashboard.html template
     }
 }

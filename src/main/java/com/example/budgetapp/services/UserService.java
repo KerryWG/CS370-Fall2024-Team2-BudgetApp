@@ -12,12 +12,16 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     public User registerUser(User user) {
-        // Hash the password before saving to the database
+        // Hash the password before saving
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-
         return userRepository.save(user);
+    }
+
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 }

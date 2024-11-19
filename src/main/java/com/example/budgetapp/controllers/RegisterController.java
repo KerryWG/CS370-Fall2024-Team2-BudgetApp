@@ -14,7 +14,7 @@ public class RegisterController {
 
     @GetMapping("/register")
     public String showRegisterPage() {
-        return "register"; // Display the register.html page
+        return "register"; // Serve the register.html page
     }
 
     @PostMapping("/register")
@@ -23,11 +23,10 @@ public class RegisterController {
                                @RequestParam(required = false) String pin) {
         User newUser = new User();
         newUser.setUsername(username);
-        newUser.setPassword(password);
+        newUser.setPassword(password); // Raw password (will be hashed in the service layer)
         newUser.setPin(pin);
 
-        userService.registerUser(newUser); // Save user to the database
-
-        return "redirect:/login"; // Redirect to login page after successful registration
+        userService.registerUser(newUser); // Save the user
+        return "redirect:/login"; // Redirect to the login page
     }
 }
