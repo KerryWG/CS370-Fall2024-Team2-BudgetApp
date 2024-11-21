@@ -4,12 +4,14 @@ Any links for resources we can use in our project
             for authentication (password hashing)
       by Panny
 
-2.    [ ThymeLeaf ] -----> [ https://www.thymeleaf.org ]
-            templates for login page
+2.    [ Spring Boot ] -----> [ https://start.spring.io ]
+            Framework to create local webpage for app
       by Panny
 
 -----------------------------------------------------------------------
 ------------------------------ RESOURCES ------------------------------
 -----------------------------------------------------------------------
 
-1. 
+1.    [ ThymeLeaf ] -----> [ https://www.thymeleaf.org ]
+            templates for login page
+      by Panny
