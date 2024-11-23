@@ -24,7 +24,7 @@ public class RegisterController {
         User newUser = new User();
         newUser.setUsername(username);
         newUser.setPassword(password); // Raw password (will be hashed in the service layer)
-        newUser.setPin(pin);
+        //newUser.setPin(pin);
 
         userService.registerUser(newUser); // Save the user
         return "redirect:/login"; // Redirect to the login page

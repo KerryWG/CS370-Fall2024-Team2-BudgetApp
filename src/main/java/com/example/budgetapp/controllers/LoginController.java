@@ -13,13 +13,12 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
     @GetMapping("/login")
-    public String showLoginPage(@RequestParam(value = "error", required = false) String error,
-                                org.springframework.ui.Model model) {
-        if (error != null) {
-            model.addAttribute("errorMessage", "Invalid username or password");
-        }
-        return "login"; // Return the login.html template
+    public String showLoginPage() {
+        return "login"; // Serve the login.html template
     }
 
     @PostMapping("/login")
@@ -27,10 +26,11 @@ public class LoginController {
                         @RequestParam String password) {
         User user = userService.findByUsername(username);
 
-        if (user != null && new BCryptPasswordEncoder().matches(password, user.getPassword())) {
-            return "redirect:/dashboard"; // Redirect to dashboard on success
+        // Check if user exists and the password matches
+        if (user != null && passwordEncoder.matches(password, user.getPassword())) {
+            return "redirect:/dashboard"; // Redirect to dashboard if login is successful
         } else {
-            return "redirect:/login?error=true"; // Redirect back to login on failure
+            return "redirect:/login?error=true"; // Redirect back to login with an error parameter
         }
     }
 }

@@ -4,33 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="/static/css/login.css">
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
+    <script>
+        // Display the "Wrong credentials" message as a pop-up if error is present in the URL
+        window.onload = function () {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get("error")) {
+                alert("Wrong credentials. Please try again.");
+            }
+        };
+    </script>
 </head>
 <body>
-<div class="container">
-    <h1>Please sign in</h1>
-    <form action="/login" method="post">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" placeholder="Username" required>
+<section class="signin">
+    <div class="content">
+        <h2>Please Sign In</h2>
+        <form action="/login" method="POST">
+            <div class="inputBox">
+                <input type="text" name="username" required>
+                <i>Username</i>
+            </div>
+            <div class="inputBox">
+                <input type="password" name="password" required>
+                <i>Password</i>
+            </div>
+            <input type="submit" value="Login">
+        </form>
+        <div class="links">
+            <a href="#">Forgot Password?</a>
+            <br>
+            <a href="/register">Register</a>
         </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Password" required>
-        </div>
-        <button type="submit" class="btn">Sign in</button>
-    </form>
-    <p>New here? <a href="/register">Register now</a></p>
-</div>
-
-<!-- JavaScript for detecting and displaying the "Wrong credentials" popup -->
-<script>
-    // Check if the URL contains the error query parameter
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has('error')) {
-        // Display the popup message
-        alert("Wrong credentials. Please try again.");
-    }
-</script>
+    </div>
+</section>
 </body>
 </html>

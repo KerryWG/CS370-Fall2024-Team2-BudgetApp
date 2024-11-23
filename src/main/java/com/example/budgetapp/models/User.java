@@ -6,19 +6,15 @@ import jakarta.persistence.*;
 @Table(name = "users") // 'users' to avoid conflicts with SQL keyword 'user'
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    @Column(nullable = false, unique = true)
     private String username;
-
-    @Column(nullable = false)
     private String password;
 
-    @Column
-    private String pin; // Optional field
-
-    // Getters and Setters
+//    @Column
+//    private String pin; // Optional field
+//
+//    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -42,12 +38,12 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public String getPin() {
-        return pin;
-    }
-
-    public void setPin(String pin) {
-        this.pin = pin;
-    }
+//
+//    public String getPin() {
+//        return pin;
+//    }
+//
+//    public void setPin(String pin) {
+//        this.pin = pin;
+//    }
 }
